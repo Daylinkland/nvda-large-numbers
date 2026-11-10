@@ -17,9 +17,9 @@ It works with any synthesizer — Microsoft SAPI, eSpeak, Vocalizer, hardware sy
 
 ## Download
 
-- The add-on package: https://github.com/Daylinkland/nvda-large-numbers/blob/main/largeNumberReader-1.2.nvda-addon
-- Package plus instructions in one zip: https://github.com/Daylinkland/nvda-large-numbers/blob/main/Large-Number-Reader-1.2.zip
-- Releases, if one has been published: https://github.com/Daylinkland/nvda-large-numbers/releases
+- Latest release, package attached: https://github.com/Daylinkland/nvda-large-numbers/releases/latest
+- Direct file: https://github.com/Daylinkland/nvda-large-numbers/releases/download/v1.2/largeNumberReader-1.2.nvda-addon
+- Also in the repository: `largeNumberReader-1.2.nvda-addon` and `Large-Number-Reader-1.2.zip`
 
 ## Install
 
