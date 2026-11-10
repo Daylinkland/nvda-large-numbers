@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Large Number Reader</title>
+</head>
+<body>
+<h1>Large Number Reader</h1>
+<p>Speaks long numbers as words instead of one digit at a time, in English or Spanish.</p>
+
+<h2>What it does</h2>
+<ul>
+<li>1500000 is spoken as "one million five hundred thousand", or in Spanish "un millón quinientos mil".</li>
+<li>1235892 is spoken as "one million two hundred thirty five thousand eight hundred ninety two", or "un millón doscientos treinta y cinco mil ochocientos noventa y dos".</li>
+<li>1000000000000000 is spoken as "one quadrillion", or in Spanish "mil billones".</li>
+<li>Numbers from one million up to 36 digits are handled.</li>
+<li>Numbers shorter than seven digits are not touched, so 500000 and ordinary small numbers are read exactly as before.</li>
+</ul>
+
+<h2>Languages</h2>
+<p>English and Spanish are built in. By default the number language follows NVDA's own language, so a Spanish NVDA speaks Spanish numbers and an English NVDA speaks English numbers without any setting.</p>
+<p>To force a language, open NVDA menu, Preferences, Settings, Large Number Reader, and choose the number language. "Automatic" follows NVDA. Spanish uses the long scale, so billón means a million millions (10^12), and a thousand millions is "mil millones".</p>
+
+<h2>Commands</h2>
+<table>
+<tr><th>Key</th><th>Action</th></tr>
+<tr><td>NVDA+8</td><td>Turns large number reading on or off. The setting is remembered next time NVDA starts.</td></tr>
+</table>
+<p>The key can be changed in NVDA menu, Preferences, Input Gestures, Large Number Reader.</p>
+
+<h2>What it leaves alone</h2>
+<p>To avoid breaking other text, the add-on does not rewrite:</p>
+<ul>
+<li>numbers shorter than seven digits</li>
+<li>numbers with a leading zero, such as 01234567 (usually an ID)</li>
+<li>numbers glued to letters, such as 0x1234567 or abc123456</li>
+<li>dated or version style text such as 2026.2 or 192.168.1.100</li>
+<li>phone number style pairs such as 555-1234567</li>
+<li>numbers right after a currency sign, such as $1234567</li>
+<li>text spoken while spelling or reading character by character</li>
+</ul>
+
+<h2>Spoken forms and the word lists</h2>
+<p>The words come from small text files inside the add-on: <code>data/number_words.txt</code> and <code>data/scale_words.txt</code> for English, and <code>data/number_words_es.txt</code> and <code>data/scale_words_es.txt</code> for Spanish. Each group of three digits reuses the same 0 to 999 table, which keeps the whole add-on well under a tenth of a megabyte. If a file is missing or damaged the add-on builds the words itself, so speech never breaks.</p>
+
+<h2>Limits</h2>
+<ul>
+<li>Numbers longer than 36 digits are read in blocks of three digits, still not as one long digit string, but without scale names.</li>
+<li>The add-on changes what is spoken, not what is displayed, so braille output still shows the original digits.</li>
+</ul>
+</body>
+</html>

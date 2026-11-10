@@ -1,0 +1,13 @@
+# Large Number Reader: Spanish scale names (long scale), smallest first.
+# Line 1 is thousands, line 2 millions, and so on.
+mil
+millón
+mil millones
+billón
+mil billones
+trillón
+mil trillones
+cuatrillón
+mil cuatrillones
+quintillón
+mil quintillones

@@ -1,0 +1,21 @@
+# compiled Python
+__pycache__/
+*.pyc
+*.pyo
+
+# older packages that accumulate next to the share README
+to-share/*.nvda-addon
+
+# superseded builds kept locally
+old/
+
+# personal notes, contains local paths
+NOTES.txt
+
+# local publish instructions, contain this machine's paths
+PUT-ON-GITHUB.txt
+
+# editor and OS noise
+Thumbs.db
+desktop.ini
+.DS_Store

@@ -1,0 +1,13 @@
+# Large Number Reader: English scale names, smallest first.
+# Line 1 is thousands, line 2 millions, and so on.
+thousand
+million
+billion
+trillion
+quadrillion
+quintillion
+sextillion
+septillion
+octillion
+nonillion
+decillion
