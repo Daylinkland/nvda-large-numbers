@@ -15,6 +15,9 @@ NOTES.txt
 # local publish instructions, contain this machine's paths
 PUT-ON-GITHUB.txt
 
+# local helper tools
+.tools/
+
 # editor and OS noise
 Thumbs.db
 desktop.ini
