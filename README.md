@@ -15,9 +15,15 @@ It works with any synthesizer — Microsoft SAPI, eSpeak, Vocalizer, hardware sy
 - NVDA 2025.1 or newer
 - Windows
 
+## Download
+
+- The add-on package: https://github.com/Daylinkland/nvda-large-numbers/blob/main/largeNumberReader-1.2.nvda-addon
+- Package plus instructions in one zip: https://github.com/Daylinkland/nvda-large-numbers/blob/main/Large-Number-Reader-1.2.zip
+- Releases, if one has been published: https://github.com/Daylinkland/nvda-large-numbers/releases
+
 ## Install
 
-1. Download `largeNumberReader-1.2.nvda-addon` (from the repository files, or from the latest Release).
+1. Download `largeNumberReader-1.2.nvda-addon` from a link above.
 2. Press Enter on the file, or right-click it and choose Install.
 3. Answer Yes to the install question, then let NVDA restart.
 
