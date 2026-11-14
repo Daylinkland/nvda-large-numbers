@@ -37,6 +37,18 @@ _PATTERN = re.compile(
 
 _DIGIT = re.compile(r"\d")
 
+# A current/max pair, such as a game's health bar (3486099252615/4470515485023)
+# or "damage/needed". A slash normally means "this is not a quantity", which
+# left both numbers being read out one digit at a time, but both halves really
+# are quantities, so both are spelled out and the slash is kept between them.
+_PAIR = re.compile(
+	r"(?<![0-9A-Za-z._:/\\#$€£¥%])"
+	r"(\d{1,3}(?:,\d{3}){2,}|\d{7,})"
+	r"(\s*/\s*)"
+	r"(\d{1,3}(?:,\d{3}){2,}|\d{7,})"
+	r"(?![0-9A-Za-z_:\\/$€£¥%-])"
+)
+
 
 def group_word(number, language=None):
 	"""Words for 0 to 999 in the chosen language."""
@@ -88,10 +100,37 @@ def expand_match(text, match, language=None):
 	return number_to_words(digits, language)
 
 
+def _side_words(digits, language=None):
+	"""Words for one half of a pair, or None when it is not a quantity."""
+	plain = digits.replace(",", "")
+	if len(plain) < 7 or plain[0] == "0":
+		return None
+	return number_to_words(plain, language)
+
+
+def expand_pairs(text, language=None):
+	"""Spell out both halves of current/max pairs such as 1500000/2000000."""
+
+	def replace(match):
+		if _is_blocked_by_dot_or_comma(text, match.end()):
+			return match.group()
+		first, separator, second = match.group(1), match.group(2), match.group(3)
+		left = _side_words(first, language)
+		right = _side_words(second, language)
+		if left is None and right is None:
+			return match.group()
+		return (left or first) + separator + (right or second)
+
+	return _PAIR.sub(replace, text)
+
+
 def expand_text(text, language=None):
 	"""Return text with every large number written out in the chosen language."""
 	if not text or len(text) < 7 or _DIGIT.search(text) is None:
 		return text
+
+	if _PAIR.search(text):
+		text = expand_pairs(text, language)
 
 	def replace(match):
 		return expand_match(text, match, language)

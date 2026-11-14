@@ -11,6 +11,7 @@ Run:  python tests/test_number_reader.py
 
 import importlib.util
 import os
+import re
 import sys
 import types
 import unittest
@@ -111,6 +112,37 @@ class NumberWordsTests(unittest.TestCase):
 			"one million two hundred thirty four thousand five hundred sixty seven "
 			"and seven million six hundred fifty four thousand three hundred twenty one",
 		)
+
+	def test_damage_over_max_pair_is_spoken(self):
+		self.check(
+			"3486099252615/4470515485023",
+			"three trillion four hundred eighty six billion ninety nine million two hundred"
+			" fifty two thousand six hundred fifteen/four trillion four hundred seventy billion"
+			" five hundred fifteen million four hundred eighty five thousand twenty three",
+		)
+
+	def test_pair_with_spaces_around_the_slash(self):
+		self.check("1500000 / 2000000", "one million five hundred thousand / two million")
+
+	def test_health_bar_line_from_a_game(self):
+		line = (
+			"Current boss: wooserb. Health: 3486099252615/4470515485023. "
+			"Your damage: 265344291657."
+		)
+		out = numberwords.expand_text(line)
+		self.assertIn("three trillion four hundred eighty six billion", out)
+		self.assertIn("four trillion four hundred seventy billion", out)
+		self.assertIn("two hundred sixty five billion three hundred forty four million", out)
+		self.assertIsNone(re.search(r"\d{7,}", out), out)
+
+	def test_pairs_that_must_not_change(self):
+		for text in (
+			"01234567/07654321",
+			"2026/2027",
+			"1234567.89/7654321",
+			"192.168.1.100/24",
+		):
+			self.assertEqual(numberwords.expand_text(text), text, text)
 
 	def test_empty_and_no_digits(self):
 		self.assertEqual(numberwords.expand_text(""), "")

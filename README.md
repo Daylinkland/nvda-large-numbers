@@ -18,16 +18,16 @@ It works with any synthesizer — Microsoft SAPI, eSpeak, Vocalizer, hardware sy
 ## Download
 
 - Latest release, package attached: https://github.com/Daylinkland/nvda-large-numbers/releases/latest
-- Direct file: https://github.com/Daylinkland/nvda-large-numbers/releases/download/v1.2/largeNumberReader-1.2.nvda-addon
-- Also in the repository: `largeNumberReader-1.2.nvda-addon` and `Large-Number-Reader-1.2.zip`
+- Direct file: https://github.com/Daylinkland/nvda-large-numbers/releases/download/v1.3/largeNumberReader-1.3.nvda-addon
+- Also in the repository: `largeNumberReader-1.3.nvda-addon`
 
 ## Install
 
-1. Download `largeNumberReader-1.2.nvda-addon` from a link above.
+1. Download `largeNumberReader-1.3.nvda-addon` from a link above.
 2. Press Enter on the file, or right-click it and choose Install.
 3. Answer Yes to the install question, then let NVDA restart.
 
-To confirm it is running: NVDA menu, Tools, Add-on Store, Installed add-ons, look for "Large Number Reader" 1.2.
+To confirm it is running: NVDA menu, Tools, Add-on Store, Installed add-ons, look for "Large Number Reader" 1.3.
 
 To remove it: NVDA menu, Tools, Add-on Store, Installed add-ons, select Large Number Reader, Remove.
 
@@ -72,6 +72,8 @@ Rewriting is deliberately conservative, so unrelated text keeps working:
 - anything spoken while spelling or reading character by character
 
 Comma grouped numbers work too: `1,235,892` is read the same as `1235892`.
+
+Numbers against a symbol are still spoken: `1500000/2000000` reads as "one million five hundred thousand slash two million" instead of being read out digit by digit. Added in 1.3.
 
 ## Limits
 
